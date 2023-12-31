@@ -83,7 +83,6 @@ function removeDupesInPlace(nums) {
 
 const testNums = [0, 0, 0, 1, 1, 1, 1, 2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5]
 const test2 = [1, 1, 1, 2, 2, 3]
-console.log(testNums.length)
 
 // That giant explanation above basically just says take the sorted array of numbers and only allow 2 or less of each number. If you remove numbers, the length of the array shouldn't change, just replace them with whatever you want and move their previous spot to the end of the array so that the order and the length remain the same
 
@@ -111,5 +110,80 @@ function removeDuplicates(nums) {
   return nums.length
 }
 
-console.log(removeDuplicates(testNums))
-console.log(removeDuplicates(test2))
+// console.log(removeDuplicates(testNums))
+// console.log(removeDuplicates(test2))
+
+// Given an input string s, reverse the order of the words.
+// A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+// Return a string of the words in reverse order concatenated by a single space.
+// Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+
+// Example 1:
+// Input: s = "the sky is blue"
+// Output: "blue is sky the"
+
+// Example 2:
+// Input: s = "  hello world  "
+// Output: "world hello"
+// Explanation: Your reversed string should not contain leading or trailing spaces.
+
+// Example 3:
+// Input: s = "a good   example"
+// Output: "example good a"
+// Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+const str1 = "the sky is blue"
+const str2 = "  hello world  "
+const str3 = "a good   example"
+
+function makeSentenceGoBackwards(str) {
+  const trimmed = str.trim().replace(/\s+/g, ' ')
+  let sliceCount = 0
+  let backwards = []
+  for (let i = trimmed.length - 1; i >= 0; i--) {
+    if (trimmed.charCodeAt(i) !== 32) {
+      sliceCount++
+    }
+    if (trimmed.charCodeAt(i) === 32) {
+      const word = trimmed.slice(i + 1, i + (sliceCount + 1))
+      backwards.push(word)
+      sliceCount = 0
+    }
+    if (i === 0) {
+      const word = trimmed.slice(i, i + (sliceCount))
+      backwards.push(word)
+      sliceCount = 0
+    }
+  }
+  return backwards.join(' ')
+}
+
+console.log(makeSentenceGoBackwards(str1))
+console.log(makeSentenceGoBackwards(str2))
+console.log(makeSentenceGoBackwards(str3))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
