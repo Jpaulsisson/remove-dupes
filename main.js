@@ -158,19 +158,36 @@ function makeSentenceGoBackwards(str) {
   return backwards.join(' ')
 }
 
-console.log(makeSentenceGoBackwards(str1))
-console.log(makeSentenceGoBackwards(str2))
-console.log(makeSentenceGoBackwards(str3))
+// console.log(makeSentenceGoBackwards(str1))
+// console.log(makeSentenceGoBackwards(str2))
+// console.log(makeSentenceGoBackwards(str3))
 
+// lol apparently I could've just done this...
+function easierBackwards(stringsForDummies) {
+  const trimmed = stringsForDummies.trim().replace(/\s{2,}/g, ' ')
+  return trimmed.split(' ').reverse().join(' ')
+}
+// Man that made me feel so dumb. 
 
+function numIsPalindrome(num) {
+  if (num < 0) return false
+  if (num <= 9) return true
+  const stringNum = String(num)
+  let j = Math.ceil(stringNum.length / 2)
+  for (let i = Math.floor(stringNum.length / 2) - 1; i >= 0; i--) {
+    if (stringNum[i] != stringNum[j]) return false
+    j++
+  }
+  return true
+}
 
+// obviously this could be done the same way as the last one but that doesn't seem like much of a challenge.
 
-
-
-
-
-
-
+// console.log(numIsPalindrome(123321))
+// console.log(numIsPalindrome(678651))
+// console.log(numIsPalindrome(123217712321))
+// console.log(numIsPalindrome(-123321))
+// console.log(numIsPalindrome(5))
 
 
 
