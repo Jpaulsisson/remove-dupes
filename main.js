@@ -91,7 +91,7 @@ const test2 = [1, 1, 1, 2, 2, 3]
 // something like:
 // if value > previous value, current = value and if count > 2, splice count += 1, then splice on current change and push x to the end of the array the same amount as was spliced off. 
 
-function removeDuplicates(nums) {
+function removeDupesAfterTwo(nums) {
   let value = -Infinity
   let count = 0
   for (let i = 0; i < nums.length; i++) {
