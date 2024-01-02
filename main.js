@@ -189,14 +189,38 @@ function numIsPalindrome(num) {
 // console.log(numIsPalindrome(-123321))
 // console.log(numIsPalindrome(5))
 
+function groupAnagrams(wordList) {
+  if (wordList.length === 0) return [[]]
+  if (wordList.length === 1) return [[wordList[0]]]
+  let grouped = [[wordList[0]]]
+  for (let i = 1; i < wordList.length; i++) {
+    let added = false
+    for (let j = 0; j < grouped.length; j++) {
+      if (grouped[j][0].split('').toSorted().join('') === wordList[i].split('').toSorted().join('')) {
+        grouped[j].push(wordList[i])
+        added = true
+      }
+    }
+    if (!added) grouped.push([wordList[i]])
+  }
+  return grouped
+}
+// This works perfectly but LeetCode is rejecting it saying it takes too long to run when they throw multiple 1000 element arrays over and over
+const wordList = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
+// function groupEmUp(wordList) {
+//   if (wordList.length === 0) return [[]]
+//   if (wordList.length === 1) return [[wordList[0]]]
+//   const groups = {}
 
+//   for (let word of wordList) {
+//     let target = word.split('').sort().join('')
+//     if (groups[target]) {
 
+//     }
+//   }
 
-
-
-
-
+// }
 
 
 
